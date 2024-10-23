@@ -13,13 +13,14 @@ public class HumanMovement : MonoBehaviour
     public GameObject humanReset;
     public bool humanStop;
     void Update(){
-        if (Input.GetKey("h"))
+        if (Input.GetKey("h")) //replace with timer, add warning
         {
             speed = 5;
         }
         //is cat in human sight
-        if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) {
+        if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) { //add result
             Debug.Log("You've been spotted!");
+            //scene reset
             playerCaught = true;
         }
         else {
