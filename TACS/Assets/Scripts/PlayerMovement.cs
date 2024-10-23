@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     // private List<KeyCode> keysPressed = new List<KeyCode>();
     // public InputAction playerControls;
     private Rigidbody2D rb;
+    private Collider2D cl;
     private float horizontal;
+    private float vertical;
+    private bool isOnCurtain = false;
     public Transform groundCheck;
     public LayerMask groundLayer;
     private bool isFacingRight = true;
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Hello world! " + speed);
         rb = GetComponent<Rigidbody2D>();
+        cl = GetComponent<Collider2D>();
         spawnLoc = transform.position;
     }
 
@@ -31,10 +35,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f) Flip();
         if (!isFacingRight && horizontal > 0f) Flip();
+
     }
 
     void FixedUpdate() {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if(isOnCurtain) {
+            rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        }
+        else rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
     void OnJump(InputValue value) {
@@ -51,6 +59,14 @@ public class PlayerMovement : MonoBehaviour
         horizontal = value.Get<float>();
     }
 
+    void OnClimb(InputValue value) {
+        Debug.Log("Climbing");
+        if(isOnCurtain) {
+            Debug.Log("Climbing real");
+            vertical = value.Get<float>();
+        }
+    }
+
     private bool IsGrounded() {
         return Physics2D.OverlapCircle( groundCheck.position, .1f, groundLayer);
     }
@@ -62,4 +78,18 @@ public class PlayerMovement : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.layer == 8) {
+            isOnCurtain = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.layer == 8) {
+            isOnCurtain = false;
+        }
+    }
+
+    
 }
