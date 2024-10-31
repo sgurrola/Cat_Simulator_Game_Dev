@@ -18,9 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isFacingRight = true;
     private Vector3 spawnLoc;
-    
-    private int score = 0;
-
+    public ScoreManager scoreManager;
+    public bool playerCaught;
+    //private int score = 0;
+    public LayerMask humanFieldLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f) Flip();
         if (!isFacingRight && horizontal > 0f) Flip();
+        
+        if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
+            Debug.Log("You've been spotted! player!");
+            //scene reset
+            playerCaught = true;
+        }
+        else {
+            playerCaught = false;
+        }
+        if (playerCaught) {
+            if (scoreManager != null)
+            {
+                this.gameObject.SetActive(false);
+                scoreManager.PlayerDied();
+            }
+        }
 
     }
 
@@ -90,6 +107,4 @@ public class PlayerMovement : MonoBehaviour
             isOnCurtain = false;
         }
     }
-
-    
 }
