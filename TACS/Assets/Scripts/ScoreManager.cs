@@ -38,6 +38,7 @@ public class ScoreManager : MonoBehaviour
 
     public void PlayerDied() 
     {
+        player.gameObject.SetActive(false);
         this.lives--;
         UpdateLifeUI();
 

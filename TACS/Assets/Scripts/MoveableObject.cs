@@ -17,13 +17,20 @@ public class MoveableObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Destroyer") {
+        if (collision.gameObject.tag == "Destroyer") 
+        {
             Destroy(this.gameObject);
             if (scoreManager != null)
             {
-                //FindObjectOfType<ScoreManager>().IncreaseScore(1);
-                scoreManager.IncreaseScore(1);
-                Debug.Log("Score increased, current score: " + scoreManager.score);
+                if(this.gameObject.tag == "Moveable") 
+                {
+                    scoreManager.IncreaseScore(1);
+                    Debug.Log("Score increased, current score: " + scoreManager.score);
+                } else //else if (this.gameObject.tag == "Bomb")
+                {
+                    scoreManager.PlayerDied();
+                }
+                
             }
         }
     }
