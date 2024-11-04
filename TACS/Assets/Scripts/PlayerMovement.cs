@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 scoreManager.PlayerDied();
+                MomentumStop();
             }
         }
 
@@ -106,5 +107,10 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.layer == 8) {
             isOnCurtain = false;
         }
+    }
+
+    public void MomentumStop() {
+        horizontal = 0;
+        vertical = 0;
     }
 }

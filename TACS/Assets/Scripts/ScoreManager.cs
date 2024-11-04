@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
     private void Respawn()
     {
         player.transform.position = Vector3.zero;
+        player.GetComponent<PlayerMovement>().MomentumStop();
         player.gameObject.SetActive(true);
     }
 }
