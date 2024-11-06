@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0;         // The player's score
+    public int maxscore = 4;
     public int lives = 9;
+    public int maxlives = 9;
     public Text scoreText;        // Reference to the UI text element
     public Text lifeText;
     public float respawn_time = 3.0f;
@@ -14,7 +16,12 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore(int amount)
     {
         score += amount;
-        UpdateScoreUI();
+        if (score == maxscore) {
+            //advance to next level/scene
+            UpdateScoreUI();
+        } else {
+            UpdateScoreUI();
+        }
     }
 
     // Update the score display
@@ -22,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + score.ToString();
+            scoreText.text = "Score: " + score.ToString() + "/" + maxscore.ToString();
         }
     }
 
@@ -31,8 +38,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (lifeText != null)
         {
-            lifeText.text = "Lives: " + lives.ToString();
-            Debug.Log("Health decreased, current health: " + lives);
+            lifeText.text = "Lives: " + lives.ToString() + "/" + maxlives.ToString();
+            Debug.Log("Health decreased, current health: " + lives + "/" + maxlives);
         }
     }
 
