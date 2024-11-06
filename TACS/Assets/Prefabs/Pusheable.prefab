@@ -172,3 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
+  humanFieldLayer:
+    serializedVersion: 2
+    m_Bits: 128
