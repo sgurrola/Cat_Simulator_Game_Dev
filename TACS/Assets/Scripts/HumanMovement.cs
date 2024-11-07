@@ -62,7 +62,6 @@ public class HumanMovement : MonoBehaviour
             }
             }
         }
-
     }
 
     void HumanStart() {
