@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -89,6 +90,10 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.layer == 8) {
             isOnCurtain = false;
         }
+    }
+
+    void OnReset(InputValue value) {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     

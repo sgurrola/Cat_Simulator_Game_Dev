@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - humanFieldLayer
   - Destroyer
-  - 
+  - safeZone
   - Table
   - Curtain
   - 
@@ -39,10 +39,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
   m_SortingLayers:
+  - name: human
+    uniqueID: 1706860271
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
