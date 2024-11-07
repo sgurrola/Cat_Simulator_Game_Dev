@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isFacingRight = true;
     private Vector3 spawnLoc;
+
+    public float fallMult = 2.5f;
+    public float lowJumpMult = 2f;
     
     private int score = 0;
 
@@ -43,21 +47,42 @@ public class PlayerMovement : MonoBehaviour
         if(isOnCurtain) {
             rb.velocity = new Vector2(horizontal * speed, vertical * speed);
         }
+        else if(rb.velocity.y < 0) { //coming down
+            Debug.Log("negative y vel");
+            // rb.velocity = new Vector2(horizontal * .95f, rb.velocity.y);        //limited in air movement - creates issue with moving on top of pushable obj
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);    //unlimited in air movement going down
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
+        }
+        else if(rb.velocity.y > 0 && !Input.GetButton("Jump")) { //holding jump
+            // Debug.Log("lowjumpmult used");
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
+        }
         else rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
     }
+
+    // void OnJump(InputValue value) {
+    //     Debug.Log("Jumping");
+    //     if (value.isPressed && IsGrounded()) {
+    //         Debug.Log("Jumping real");
+    //         rb.velocity = new Vector2(rb.velocity.x,jumpPower);
+    //     }
+    //     //else if(rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y * .5f);
+    // }
 
     void OnJump(InputValue value) {
-        Debug.Log("Jumping");
+        // Debug.Log("Jumping");
         if (value.isPressed && IsGrounded()) {
-            Debug.Log("Jumping real");
+            // Debug.Log("Jumping real");
             rb.velocity = new Vector2(rb.velocity.x,jumpPower);
         }
-        else if(rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y * .5f);
+        // else if(rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y * .5f);
     }
 
-    void OnMove(InputValue value) {
+    void OnMove(InputValue value) {  
         Debug.Log("Moving: " + value.Get<float>());
-        horizontal = value.Get<float>();
+        horizontal = value.Get<float>();             
     }
 
     void OnClimb(InputValue value) {
@@ -66,10 +91,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Climbing real");
             vertical = value.Get<float>();
         }
+        if(!isOnCurtain) {                      //prevents weird curtain bug that forces player to only go up on curtains
+            vertical = 0;
+        }
     }
 
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle( groundCheck.position, .1f, groundLayer);
+        return Physics2D.OverlapCircle( groundCheck.position, .5f, groundLayer);
     }
 
     private void Flip() {
@@ -81,13 +109,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.layer == 8) {
+        if(other.gameObject.layer == 11) {
             isOnCurtain = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.layer == 8) {
+        if(other.gameObject.layer == 11) {
             isOnCurtain = false;
         }
     }

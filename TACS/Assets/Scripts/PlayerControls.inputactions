@@ -33,9 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Meow",
+                    "type": "Button",
+                    "id": "a23495b5-1141-44fc-b318-f2081af3ee88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Reset",
                     "type": "Button",
-                    "id": "0b1368c3-f817-4e9c-ae65-621cd5f1b5ed",
+                    "id": "e9438d14-3160-4947-932a-aadaf9bfada8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -154,8 +163,52 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Arrows",
+                    "id": "5b18962b-74a9-4943-89c0-7f517c8d0791",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Climb",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e8402063-1483-4a73-97bf-fac05d25e738",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Climb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "8909c7cf-b46c-4be3-99ca-0cdcaaf9b0ec",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Climb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
-                    "id": "c24315e3-1d31-411a-a68d-746b0881a4f1",
+                    "id": "acf4c85d-2228-46b2-ac79-7a9bcfccc967",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Meow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b0ac09c-8153-4d17-90c6-aaadab3b0a44",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",

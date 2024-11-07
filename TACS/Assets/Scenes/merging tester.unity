@@ -1470,7 +1470,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &993833662
 Rigidbody2D:
@@ -1487,7 +1487,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.8
   m_Material: {fileID: 6200000, guid: 1e4391c37498c1a43857d660e650a2f3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1512,11 +1512,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 6.5
+  jumpPower: 10
   groundCheck: {fileID: 1242323071}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  fallMult: 2.5
+  lowJumpMult: 5
 --- !u!114 &993833664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,7 +1739,7 @@ GameObject:
   - component: {fileID: 1450910449}
   - component: {fileID: 1450910448}
   - component: {fileID: 1450910447}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Curtain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
