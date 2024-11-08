@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Destroyer
   - Moveable
+  - VisionField
+  - Bomb
   layers:
   - Default
   - TransparentFX
