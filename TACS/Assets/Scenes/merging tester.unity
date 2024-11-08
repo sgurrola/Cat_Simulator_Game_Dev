@@ -1115,7 +1115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166752539725862274, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.64
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1166752539725862274, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1554,6 +1554,9 @@ MonoBehaviour:
   humanFieldLayer:
     serializedVersion: 2
     m_Bits: 128
+  safeZoneLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &993833664
 MonoBehaviour:
   m_ObjectHideFlags: 0

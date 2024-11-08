@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public bool playerCaught;
     //private int score = 0;
     public LayerMask humanFieldLayer;
+    public LayerMask safeZoneLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +47,13 @@ public class PlayerMovement : MonoBehaviour
         if (!isFacingRight && horizontal > 0f) Flip();
         
         if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
+            if(!Physics2D.OverlapCircle(transform.position, .1f, safeZoneLayer))
+            {
             Debug.Log("You've been spotted! player!");
             //scene reset
             playerCaught = true;
+            }
+            else{ Debug.Log("Good Hiding");}
         }
         else {
             playerCaught = false;
