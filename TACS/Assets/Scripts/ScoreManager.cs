@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0;         // The player's score
@@ -17,9 +17,14 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore(int amount)
     {
         score += amount;
-        if (score == maxscore) {
+        if (score >= maxscore) {
             //advance to next level/scene
             UpdateScoreUI();
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (SceneManager.sceneCount > nextSceneIndex)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
         } else {
             UpdateScoreUI();
         }
