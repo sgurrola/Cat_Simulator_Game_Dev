@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -43,6 +44,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void PlayerWon() {
+        if (score == 4) {
+            SceneManager.LoadScene("gameWin");
+        }
+    }
+
     public void PlayerDied() 
     {
         player.gameObject.SetActive(false);
@@ -51,6 +58,7 @@ public class ScoreManager : MonoBehaviour
 
         if (this.lives <= 0) {
             //GameOver();
+            SceneManager.LoadScene("gameOver");
         } else {
             Invoke(nameof(Respawn), this.respawn_time);
         }

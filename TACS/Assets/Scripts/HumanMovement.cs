@@ -9,10 +9,10 @@ public class HumanMovement : MonoBehaviour
     public float speed = 0;
     public LayerMask humanFieldLayer;
     public GameObject humanField;
-    public GameObject player;
-    public bool playerCaught;
+    //public GameObject player;
+    //public bool playerCaught;
     public GameObject humanReset;
-    public LayerMask safeZoneLayer;
+    //public LayerMask safeZoneLayer;
 
     bool hasRotated = false;
 
@@ -20,11 +20,11 @@ public class HumanMovement : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("HumanStart", 15.0f, 12f); //swap for coroutine
+        InvokeRepeating("HumanStart", 20.0f, 15.0f); //swap for coroutine
         //https://docs.unity3d.com/ScriptReference/MonoBehaviour.StartCoroutine.html
     }
     void Update(){
-        if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) { //add result
+        /*if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) { //add result
             if(!Physics2D.OverlapCircle(player.transform.position, .1f, safeZoneLayer))
             {
                 Debug.Log("You've been spotted!");
@@ -36,7 +36,7 @@ public class HumanMovement : MonoBehaviour
         }
         else {
             playerCaught = false;
-        }
+        }*/
 
         transform.Translate(Vector3.right * speed * Time.deltaTime);
         //humanField.transform.Translate(Vector3.right * speed * Time.deltaTime);
