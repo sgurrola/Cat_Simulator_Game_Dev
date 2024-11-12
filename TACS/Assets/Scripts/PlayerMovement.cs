@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public bool playerCaught;
     //private int score = 0;
     public LayerMask humanFieldLayer;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +62,12 @@ public class PlayerMovement : MonoBehaviour
                 MomentumStop();
             }
         }
+
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)){ anim.SetFloat("isRunning", 0.2f); Debug.Log("waling");}
+        else anim.SetFloat("isRunning", 0f);
+
+        if(Input.GetKey(KeyCode.Space)){ anim.SetFloat("isJumping", 0.2f); Debug.Log("hop hop");}
+        else anim.SetFloat("isJumping", 0f);
 
     }
 

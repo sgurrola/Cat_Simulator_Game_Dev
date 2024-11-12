@@ -439,6 +439,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2083801665, guid: 60005b49fc6244d418015194aa781e83, type: 3}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -449,6 +465,14 @@ PrefabInstance:
     - target: {fileID: 4398822734047680328, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.73333335
       objectReference: {fileID: 0}
     - target: {fileID: 6678763417101730764, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: scoreManager
@@ -954,6 +978,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pusheable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6678763417101730764, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: scoreManager
       value: 
@@ -1156,6 +1188,22 @@ PrefabInstance:
     - target: {fileID: 1166752539725862274, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -812436451, guid: 60005b49fc6244d418015194aa781e83, type: 3}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3189122065857716744, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_SortingOrder
@@ -1386,6 +1434,7 @@ GameObject:
   - component: {fileID: 993833662}
   - component: {fileID: 993833661}
   - component: {fileID: 993833664}
+  - component: {fileID: 993833665}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1434,8 +1483,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.43949443, b: 0, a: 1}
+  m_Sprite: {fileID: -312309947, guid: f761cefbecc285544899f0e66bcb6310, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1497,7 +1546,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1558,6 +1607,7 @@ MonoBehaviour:
   humanFieldLayer:
     serializedVersion: 2
     m_Bits: 128
+  anim: {fileID: 993833665}
 --- !u!114 &993833664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1638,27 @@ MonoBehaviour:
   m_DefaultActionMap: Everything
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &993833665
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993833658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f4a20946e1c2904b88cac7c10fb17c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1242323070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2294,14 @@ PrefabInstance:
     - target: {fileID: 4398822734047680328, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: m_Name
       value: Pusheable (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871888462601500122, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6678763417101730764, guid: c66fe1e5cf67e6b449d9c6073320d939, type: 3}
       propertyPath: scoreManager
