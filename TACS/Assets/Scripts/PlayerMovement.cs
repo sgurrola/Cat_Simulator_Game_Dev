@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     //private int score = 0;
     public LayerMask humanFieldLayer;
     public Animator anim;
+    public LayerMask safeZoneLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,14 +48,20 @@ public class PlayerMovement : MonoBehaviour
         if (isFacingRight && horizontal < 0f) Flip();
         if (!isFacingRight && horizontal > 0f) Flip();
         
-        if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
-            Debug.Log("You've been spotted! player!");
+        if(Physics2D.OverlapCircle(transform.position, .1f, humanFieldLayer)) { //add result
+            if(!Physics2D.OverlapCircle(transform.position, .1f, safeZoneLayer))
+            {
+                Debug.Log("You've been spotted!");
             //scene reset
             playerCaught = true;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            Debug.Log("Good Hiding");
         }
         else {
             playerCaught = false;
         }
+
         if (playerCaught) {
             if (scoreManager != null)
             {
