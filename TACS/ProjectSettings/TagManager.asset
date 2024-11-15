@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Setting
+    uniqueID: 853482299
+    locked: 0
   - name: human
     uniqueID: 1706860271
     locked: 0
