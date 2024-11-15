@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public bool playerCaught;
     //private int score = 0;
     public LayerMask humanFieldLayer;
+
+    public LayerMask safeZoneLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,13 +47,17 @@ public class PlayerMovement : MonoBehaviour
         if (isFacingRight && horizontal < 0f) Flip();
         if (!isFacingRight && horizontal > 0f) Flip();
         
-        if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
-            Debug.Log("You've been spotted! player!");
-            //scene reset
-            playerCaught = true;
-        }
-        else {
-            playerCaught = false;
+        if(Physics2D.OverlapCircle(this.transform.position, .1f, humanFieldLayer)) { //add result
+            if(!Physics2D.OverlapCircle(this.transform.position, .1f, safeZoneLayer))
+            {
+                Debug.Log("You've been spotted!");
+                playerCaught = true;
+            }
+            else {
+                playerCaught = false;
+                Debug.Log("Good Hiding");
+            }
+            
         }
         if (playerCaught) {
             if (scoreManager != null)
@@ -59,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
                 this.gameObject.SetActive(false);
                 scoreManager.PlayerDied();
                 MomentumStop();
+                playerCaught = false;
+
             }
         }
 
@@ -69,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(horizontal * speed, vertical * speed);
         }
         else if(rb.velocity.y < 0) { //coming down
-            Debug.Log("negative y vel");
+            // Debug.Log("negative y vel");
             // rb.velocity = new Vector2(horizontal * .95f, rb.velocity.y);        //limited in air movement - creates issue with moving on top of pushable obj
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);    //unlimited in air movement going down
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
@@ -102,12 +110,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnMove(InputValue value) {  
-        Debug.Log("Moving: " + value.Get<float>());
+        // Debug.Log("Moving: " + value.Get<float>());
         horizontal = value.Get<float>();             
     }
 
     void OnClimb(InputValue value) {
-        Debug.Log("Climbing");
+        // Debug.Log("Climbing");
         if(isOnCurtain) {
             Debug.Log("Climbing real");
             vertical = value.Get<float>();

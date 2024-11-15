@@ -1558,6 +1558,9 @@ MonoBehaviour:
   humanFieldLayer:
     serializedVersion: 2
     m_Bits: 128
+  safeZoneLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &993833664
 MonoBehaviour:
   m_ObjectHideFlags: 0

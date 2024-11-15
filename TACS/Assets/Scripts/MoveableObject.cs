@@ -21,9 +21,9 @@ public class MoveableObject : MonoBehaviour
     void Update ()
     {
         if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
-            Debug.Log("You've been spotted! block!");
+            // Debug.Log("You've been spotted! block!");
             this.gameObject.transform.position = startpos;
-            Debug.Log("startposition"+startpos);
+            // Debug.Log("startposition"+startpos);
         }
     }
 
