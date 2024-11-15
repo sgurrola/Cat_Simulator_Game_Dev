@@ -12,9 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/merging tester.unity
     guid: d6051cf7e0f5c224bad0feaaa4d9439e
   - enabled: 1
-    path: Assets/Scenes/gameOver.unity
-    guid: 8f40df21cb8420b468d91ac3907cd5fb
+    path: Assets/Scenes/merging tester 1.unity
+    guid: 48b07b3532eb31841af315fd53aac3ae
+  - enabled: 1
+    path: Assets/Scenes/merging tester 2.unity
+    guid: ede1ed6fa63989c4fac331e9dc120272
+  - enabled: 1
+    path: Assets/Scenes/merging tester 3.unity
+    guid: 8d54e82af980e364c949b0625abb7717
+  - enabled: 1
+    path: Assets/Scenes/merging tester 4.unity
+    guid: 26c02779b5df5a3498a82a74805b0c79
   - enabled: 1
     path: Assets/Scenes/gameWin.unity
     guid: 143256b5d2eaa7741a4d140b375f418f
+  - enabled: 1
+    path: Assets/Scenes/gameOver.unity
+    guid: 8f40df21cb8420b468d91ac3907cd5fb
   m_configObjects: {}

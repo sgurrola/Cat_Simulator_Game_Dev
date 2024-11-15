@@ -47,18 +47,10 @@ public class PlayerMovement : MonoBehaviour
         
         if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
             Debug.Log("You've been spotted! player!");
-            //scene reset
-            playerCaught = true;
-        }
-        else {
-            playerCaught = false;
-        }
-        if (playerCaught) {
             if (scoreManager != null)
             {
                 this.gameObject.SetActive(false);
                 scoreManager.PlayerDied();
-                MomentumStop();
             }
         }
 

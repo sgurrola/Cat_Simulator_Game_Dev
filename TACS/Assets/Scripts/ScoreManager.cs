@@ -20,11 +20,11 @@ public class ScoreManager : MonoBehaviour
         if (score >= maxscore) {
             //advance to next level/scene
             UpdateScoreUI();
+            Debug.Log("scene change 1");
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (SceneManager.sceneCount > nextSceneIndex)
-            {
-                SceneManager.LoadScene(nextSceneIndex);
-            }
+            Debug.Log("scene change 2");
+            SceneManager.LoadScene(nextSceneIndex);
+            
         } else {
             UpdateScoreUI();
         }
