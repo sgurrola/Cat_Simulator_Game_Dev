@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 scoreManager.PlayerDied();
-                MomentumStop();
             }
         }
 
