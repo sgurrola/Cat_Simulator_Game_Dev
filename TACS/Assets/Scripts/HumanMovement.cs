@@ -16,6 +16,8 @@ public class HumanMovement : MonoBehaviour
 
     bool hasRotated = false;
 
+    public bool isMoving = false;
+
     //public float hTimer = 15f;
 
     void Start()
@@ -49,8 +51,8 @@ public class HumanMovement : MonoBehaviour
             humanField.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             hasRotated = false;
 
-            
             speed = 0;
+            isMoving = false;   
         }
         GameObject[] boxes = GameObject.FindGameObjectsWithTag("Moveable");
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
@@ -75,6 +77,7 @@ public class HumanMovement : MonoBehaviour
     }
 
     void HumanStart() {
+        isMoving = true;
         speed = 5;
     }
 }

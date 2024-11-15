@@ -1762,6 +1762,7 @@ MonoBehaviour:
   lifeText: {fileID: 314589068}
   respawn_time: 3
   player: {fileID: 993833658}
+  human: {fileID: 1763420949}
 --- !u!4 &1411981967
 Transform:
   m_ObjectHideFlags: 0
@@ -2167,6 +2168,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c066853df03504d40b877f54e7b97284, type: 3}
+--- !u!1 &1763420949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5017885757244030339, guid: c0f71362f2d2f5a42a1bafe2e98736c7, type: 3}
+  m_PrefabInstance: {fileID: 2128986173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1791000901
 PrefabInstance:
   m_ObjectHideFlags: 0
