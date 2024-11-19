@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     private bool isFacingRight = true;
-    private Vector3 spawnLoc;
+    public Vector3 spawnLoc;
 
     public float fallMult = 2.5f;
     public float lowJumpMult = 2f;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Hello world! " + speed);
         rb = GetComponent<Rigidbody2D>();
         cl = GetComponent<Collider2D>();
-        spawnLoc = transform.position;
+        spawnLoc = this.gameObject.transform.position;;
     }
 
     // Update is called once per frame
