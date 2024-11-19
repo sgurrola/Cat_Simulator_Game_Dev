@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/startScreen.unity
     guid: 77b147628a1c90e43b39b103485d01f5
   - enabled: 1
-    path: Assets/Scenes/merging tester.unity
+    path: Assets/Scenes/level.unity
     guid: d6051cf7e0f5c224bad0feaaa4d9439e
   - enabled: 1
-    path: Assets/Scenes/merging tester 1.unity
-    guid: 48b07b3532eb31841af315fd53aac3ae
+    path: Assets/Scenes/level 1.unity
+    guid: d20483226e09fa54d9ffbea838be76f5
   - enabled: 1
-    path: Assets/Scenes/merging tester 2.unity
-    guid: ede1ed6fa63989c4fac331e9dc120272
-  - enabled: 1
+    path: Assets/Scenes/level 2.unity
+    guid: 3abe8208184f01346b6202bdc80f3749
+  - enabled: 0
     path: Assets/Scenes/merging tester 3.unity
     guid: 8d54e82af980e364c949b0625abb7717
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/merging tester 4.unity
     guid: 26c02779b5df5a3498a82a74805b0c79
   - enabled: 1
