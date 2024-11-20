@@ -1217,7 +1217,7 @@ MonoBehaviour:
   scoreText: {fileID: 2100560053}
   lifeText: {fileID: 806583610}
   respawn_time: 3
-  player: {fileID: 0}
+  player: {fileID: 1845676138}
   human: {fileID: 2077402820}
 --- !u!4 &1411981967
 Transform:
@@ -1376,6 +1376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1700091932030244155, guid: 2bce42722fc53d14d9bceeb471cf4add, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 1411981966}
     - target: {fileID: 1700091932030244155, guid: 2bce42722fc53d14d9bceeb471cf4add, type: 3}
       propertyPath: safeZoneLayer.m_Bits
       value: 512
@@ -2330,6 +2334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2156450537745475365, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
+      propertyPath: m_TagString
+      value: VisionField
+      objectReference: {fileID: 0}
     - target: {fileID: 5292518079213448507, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
       propertyPath: m_Name
       value: human

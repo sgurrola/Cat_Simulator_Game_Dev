@@ -1153,6 +1153,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spawnLoc: {x: 0, y: 0, z: 0}
   fallMult: 2.5
   lowJumpMult: 2
   scoreManager: {fileID: 1411981966}
@@ -1355,6 +1356,7 @@ MonoBehaviour:
   lifeText: {fileID: 806583610}
   respawn_time: 3
   player: {fileID: 993833658}
+  human: {fileID: 5088822568025975888}
 --- !u!4 &1411981967
 Transform:
   m_ObjectHideFlags: 0
@@ -2374,6 +2376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2156450537745475365, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
+      propertyPath: m_TagString
+      value: VisionField
+      objectReference: {fileID: 0}
     - target: {fileID: 5292518079213448507, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
       propertyPath: m_Name
       value: human
@@ -2431,6 +2437,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
+--- !u!1 &5088822568025975888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5292518079213448507, guid: 98a7d4c44bdf5d748afaf92f9dc90c87, type: 3}
+  m_PrefabInstance: {fileID: 5088822568025975887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5982651899081647560
 PrefabInstance:
   m_ObjectHideFlags: 0

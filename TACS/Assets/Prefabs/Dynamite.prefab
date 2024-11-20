@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8544951945608054629}
   - component: {fileID: 1082131756198686131}
   - component: {fileID: 616213416797319117}
-  - component: {fileID: 6750865453172982703}
   - component: {fileID: 5760041431576768478}
+  - component: {fileID: -3625066991722939760}
   m_Layer: 6
   m_Name: Dynamite
   m_TagString: Bomb
@@ -114,8 +114,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6750865453172982703
-BoxCollider2D:
+--- !u!114 &5760041431576768478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352297374170415624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de78301f68656840b236f652cb100bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
+  humanFieldLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!60 &-3625066991722939760
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,7 +162,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004458189, y: 0.009326816}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -156,22 +172,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.2903547, y: 1.0274638}
-  m_EdgeRadius: 0
---- !u!114 &5760041431576768478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352297374170415624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de78301f68656840b236f652cb100bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreManager: {fileID: 0}
-  humanFieldLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  m_Points:
+    m_Paths:
+    - - {x: -1.0956521, y: 0.51304346}
+      - {x: -1.1478261, y: 0.46086955}
+      - {x: -1.1478261, y: -0.51304346}
+      - {x: 1.1391304, y: -0.51304346}
+      - {x: 1.1478261, y: -0.49565214}
+      - {x: 1.1478261, y: 0.4869565}
+      - {x: 1.1130434, y: 0.51304346}
+  m_UseDelaunayMesh: 0

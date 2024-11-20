@@ -65,11 +65,11 @@ public class MoveableObject : MonoBehaviour
     }
 
     private void moveBack() {
-        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         this.gameObject.transform.rotation = Quaternion.RotateTowards(transform.rotation,startRot,3f);
         this.gameObject.transform.position = Vector2.MoveTowards(transform.position,startpos,.085f);
         if(this.gameObject.transform.position.x == startpos.x && transform.position.y == startpos.y) {
-            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             CancelInvoke();
         }
     }
