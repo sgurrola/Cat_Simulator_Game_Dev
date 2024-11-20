@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0;         // The player's score
@@ -72,7 +71,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Respawn()
     {
-        player.transform.position = Vector3.zero;
+        player.transform.position = player.GetComponent<PlayerMovement>().spawnLoc;
         player.GetComponent<PlayerMovement>().MomentumStop();
         player.gameObject.SetActive(true);
     }
