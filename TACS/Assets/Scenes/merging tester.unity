@@ -2258,6 +2258,10 @@ PrefabInstance:
       propertyPath: humanReset
       value: 
       objectReference: {fileID: 79722425}
+    - target: {fileID: 4350154051380614528, guid: c0f71362f2d2f5a42a1bafe2e98736c7, type: 3}
+      propertyPath: m_TagString
+      value: VisionField
+      objectReference: {fileID: 0}
     - target: {fileID: 4426994256281551911, guid: c0f71362f2d2f5a42a1bafe2e98736c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.5

@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else {
                 playerCaught = false;
-                Debug.Log("Good Hiding");
+                // Debug.Log("Good Hiding");
             }
             
         }
