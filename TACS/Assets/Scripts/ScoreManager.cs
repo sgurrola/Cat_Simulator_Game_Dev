@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     public float respawn_time = 3.0f;
     public GameObject player;
 
+    public GameObject human;
+
     // This function increases the score
     public void IncreaseScore(int amount)
     {
@@ -64,15 +66,18 @@ public class ScoreManager : MonoBehaviour
             //GameOver();
             SceneManager.LoadScene("gameOver");
         } else {
-            Invoke(nameof(Respawn), this.respawn_time);
+            InvokeRepeating("Respawn",1,1);
         }
 
     }
 
     private void Respawn()
     {
-        player.transform.position = player.GetComponent<PlayerMovement>().spawnLoc;
-        player.GetComponent<PlayerMovement>().MomentumStop();
-        player.gameObject.SetActive(true);
+        if(!human.GetComponent<HumanMovement>().isMoving) {
+            player.transform.position = Vector3.zero;
+            player.GetComponent<PlayerMovement>().MomentumStop();
+            player.gameObject.SetActive(true);
+            CancelInvoke();
+        }
     }
 }

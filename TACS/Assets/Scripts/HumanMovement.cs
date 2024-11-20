@@ -16,6 +16,8 @@ public class HumanMovement : MonoBehaviour
 
     bool hasRotated = false;
 
+    public bool isMoving = false;
+
     //public float hTimer = 15f;
 
     void Start()
@@ -24,19 +26,22 @@ public class HumanMovement : MonoBehaviour
         //https://docs.unity3d.com/ScriptReference/MonoBehaviour.StartCoroutine.html
     }
     void Update(){
-        if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) { //add result
-            if(!Physics2D.OverlapCircle(player.transform.position, .1f, safeZoneLayer))
-            {
-                Debug.Log("You've been spotted!");
-            //scene reset
-            playerCaught = true;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            Debug.Log("Good Hiding");
-        }
-        else {
-            playerCaught = false;
-        }
+
+        //THIS HAS BEEN MOVED TO PLAYERMOVEMENT - MIGHT DELETE LATER
+        // if(Physics2D.OverlapCircle(player.transform.position, .1f, humanFieldLayer)) { //add result
+        //     if(!Physics2D.OverlapCircle(player.transform.position, .1f, safeZoneLayer))
+        //     {
+        //         Debug.Log("You've been spotted!");
+        //         playerCaught = true;
+        //     }
+        //     else {
+        //         playerCaught = false;
+        //         Debug.Log("Good Hiding");
+        //     }
+            
+        // }
+        
+        
 
         transform.Translate(Vector3.right * speed * Time.deltaTime);
         //humanField.transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -47,8 +52,8 @@ public class HumanMovement : MonoBehaviour
             humanField.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             hasRotated = false;
 
-            
             speed = 0;
+            isMoving = false;   
         }
         GameObject[] boxes = GameObject.FindGameObjectsWithTag("Moveable");
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
@@ -57,22 +62,23 @@ public class HumanMovement : MonoBehaviour
             foreach(GameObject bomb in bombs) {
                 Rigidbody2D boxRigidbody = box.GetComponent<Rigidbody2D>();
 
-            // Check if the box has a Rigidbody2D and its speed is greater than 0.1
+                // Check if the box has a Rigidbody2D and its speed is greater than 0.1
                 if (boxRigidbody != null && boxRigidbody.velocity.magnitude > 1f)
                 {
-                if (Physics2D.OverlapCircle(box.transform.position, 0.1f, humanFieldLayer) && !hasRotated)
-                {
-                    // Rotate the humanField object
-                    humanField.transform.Rotate(0f, 0f, .02f, Space.Self);
-                    Debug.Log("Box has moved!");
-                    hasRotated = true;
-                }
+                    if (Physics2D.OverlapCircle(box.transform.position, 0.1f, humanFieldLayer) && !hasRotated)
+                    {
+                        // Rotate the humanField object
+                        humanField.transform.Rotate(0f, 0f, .02f, Space.Self);
+                        Debug.Log("Box has moved!");
+                        hasRotated = true;
+                    }
                 }
             }
         }
     }
 
     void HumanStart() {
+        isMoving = true;
         speed = 5;
-        }
+    }
 }

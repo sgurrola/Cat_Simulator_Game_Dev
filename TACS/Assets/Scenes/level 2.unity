@@ -1420,6 +1420,7 @@ MonoBehaviour:
   lifeText: {fileID: 806583610}
   respawn_time: 3
   player: {fileID: 993833658}
+  human: {fileID: 1763420949}
 --- !u!4 &1411981967
 Transform:
   m_ObjectHideFlags: 0
