@@ -1044,13 +1044,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    1. Use WASD to move your little kitten around the room.
-
-
-    2.Knock
-    over the objects on each level but be careful! The humans lurk around every corner!'
+  m_text: "Movement:\n- US A & D to Move left and right\n- Use W to climb curtains\n-
+    Jump with SPACE\n\nObjective:\n- Knock off the objects, but not the bombs. \n-
+    There is a human who will come check occasionally so don't get caught."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1298,7 +1294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.7197266, y: 22.6763}
+  m_AnchoredPosition: {x: 5.7197266, y: 22.67627}
   m_SizeDelta: {x: -291.4393, y: -125.8474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791821702
