@@ -139,6 +139,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spawnLoc: {x: 0, y: 0, z: 0}
   fallMult: 2.5
   lowJumpMult: 2
   scoreManager: {fileID: 0}
@@ -147,6 +148,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   anim: {fileID: 4742812619852224855}
+  safeZoneLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &7922788190761205908
 Rigidbody2D:
   serializedVersion: 4
