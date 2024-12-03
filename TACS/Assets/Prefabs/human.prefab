@@ -285,8 +285,8 @@ MonoBehaviour:
   isMoving: 0
   audioSource: {fileID: -2454231588452841115}
   stepSound: {fileID: 8300000, guid: 514aa2292e3b89845944c7a2f4575243, type: 3}
-  maxVolume: 1
-  minVolume: 0.2
+  maxVolume: 2
+  minVolume: 0.5
   pitchHigh: 1
   pitchLow: 0.6
   stepInterval: 0.4
