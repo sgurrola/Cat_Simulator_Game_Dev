@@ -11,29 +11,39 @@ public class ScoreManager : MonoBehaviour
     public Text lifeText;
     public float respawn_time = 3.0f;
     public GameObject player;
-
     public GameObject human;
+    public AudioSource audioSource; // Assign the Audio Source in the Inspector
+    public AudioClip soundA; // Assign the sound for Object A
+    public AudioClip soundB; // Assign the sound for Object B
 
+    public void PushableBroke(int amount)
+    {
+        audioSource.PlayOneShot(soundA);
+        IncreaseScore(amount);
+    }
+    public void BombBroke()
+    {
+        audioSource.PlayOneShot(soundB);
+        PlayerDied();
+    }
     // This function increases the score
     public void IncreaseScore(int amount)
     {
         score += amount;
-        if (score >= maxscore) {
-            //advance to next level/scene
-            UpdateScoreUI();
-            Debug.Log("scene change 1");
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            Debug.Log("scene change 2");
-            SceneManager.LoadScene(nextSceneIndex);
-            
-        } else {
-            UpdateScoreUI();
-        }
+        UpdateScoreUI();
     }
 
     // Update the score display
     void UpdateScoreUI()
-    {
+    {   
+        if (score >= maxscore) {
+            //advance to next level/scene
+            Debug.Log("scene change 1");
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            Debug.Log("scene change 2");
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score.ToString() + "/" + maxscore.ToString();

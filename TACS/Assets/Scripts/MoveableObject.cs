@@ -36,11 +36,11 @@ public class MoveableObject : MonoBehaviour
             {
                 if(this.gameObject.tag == "Moveable") 
                 {
-                    scoreManager.IncreaseScore(1);
+                    scoreManager.PushableBroke(1);
                     Debug.Log("Score increased, current score: " + scoreManager.score);
                 } else //else if (this.gameObject.tag == "Bomb")
                 {
-                    scoreManager.PlayerDied();
+                    scoreManager.BombBroke();
                 }
                 
             }
