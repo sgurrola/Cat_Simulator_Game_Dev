@@ -1359,7 +1359,7 @@ MonoBehaviour:
   player: {fileID: 993833658}
   human: {fileID: 5088822568025975888}
   audioSource: {fileID: 1411981968}
-  soundA: {fileID: 8300000, guid: 1941460b1421a164ebdd03c16d50af44, type: 3}
+  soundA: {fileID: 8300000, guid: 9055eb49b4b2a7c499b928499993eacb, type: 3}
   soundB: {fileID: 8300000, guid: 50bb4a129d7b5c1429af8ea5543293ac, type: 3}
 --- !u!4 &1411981967
 Transform:
