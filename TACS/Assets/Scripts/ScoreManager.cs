@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
@@ -11,8 +12,10 @@ public class ScoreManager : MonoBehaviour
     public GameObject player;
     public GameObject human;
     public AudioSource audioSource; // Assign the Audio Source in the Inspector
-    public AudioClip soundA; // Assign the sound for Object A
-    public AudioClip soundB; // Assign the sound for Object B
+    public AudioClip soundA; // Assign the sound for bottle break
+    public AudioClip soundB; // Assign the sound for explosion
+    public AudioClip soundC; // Assign the sound for level completion
+    public float delayDuration = 1.0f;  // Duration to wait before transitioning
 
     private void Awake()
     {
@@ -43,10 +46,12 @@ public class ScoreManager : MonoBehaviour
     {   
         if (score >= maxscore) {
             //advance to next level/scene
-            Debug.Log("scene change 1");
+            StartCoroutine(HandleCompletion());
+            /*Debug.Log("scene change 1");
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             Debug.Log("scene change 2");
-            SceneManager.LoadScene(nextSceneIndex);
+            audioSource.PlayOneShot(soundC);//change to soundC when get sound effect
+            SceneManager.LoadScene(nextSceneIndex);*/
         }
 
         if (scoreText != null)
@@ -95,5 +100,22 @@ public class ScoreManager : MonoBehaviour
             player.gameObject.SetActive(true);
             CancelInvoke();
         }
+    }
+
+    private IEnumerator HandleCompletion()
+    {
+        yield return new WaitForSeconds(delayDuration);
+        // Play the completion sound
+        if (audioSource != null && soundC != null)
+        {
+            audioSource.PlayOneShot(soundC);
+        }
+        
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        // Wait for the sound to finish or the specified delay duration
+        yield return new WaitForSeconds(delayDuration);
+
+        // Transition to the next scene
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }

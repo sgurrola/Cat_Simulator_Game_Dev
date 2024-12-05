@@ -1351,8 +1351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   maxscore: 4
-  lives: 9
-  maxlives: 9
   scoreText: {fileID: 2100560053}
   lifeText: {fileID: 806583610}
   respawn_time: 3
@@ -1361,6 +1359,7 @@ MonoBehaviour:
   audioSource: {fileID: 1411981968}
   soundA: {fileID: 8300000, guid: 9055eb49b4b2a7c499b928499993eacb, type: 3}
   soundB: {fileID: 8300000, guid: 50bb4a129d7b5c1429af8ea5543293ac, type: 3}
+  soundC: {fileID: 8300000, guid: c01b4118326e3d04c96c5537e62a2f3b, type: 3}
 --- !u!4 &1411981967
 Transform:
   m_ObjectHideFlags: 0
