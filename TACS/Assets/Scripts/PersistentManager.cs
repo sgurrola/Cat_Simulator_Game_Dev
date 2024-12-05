@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistentManager : MonoBehaviour
 {
@@ -21,5 +22,21 @@ public class PersistentManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // Make persistent across scenes
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "startScreen")
+        {
+            lives = maxlives;
+        }
     }
 }

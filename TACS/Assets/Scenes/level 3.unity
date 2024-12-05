@@ -1486,6 +1486,7 @@ MonoBehaviour:
   soundB: {fileID: 8300000, guid: 50bb4a129d7b5c1429af8ea5543293ac, type: 3}
   soundC: {fileID: 8300000, guid: c01b4118326e3d04c96c5537e62a2f3b, type: 3}
   soundD: {fileID: 8300000, guid: d44db80d03f62e241a5acad7e7cfd490, type: 3}
+  soundE: {fileID: 8300000, guid: ae25bc9cb6f73404f9018d27c721c740, type: 3}
   delayDuration: 1
 --- !u!4 &1411981967
 Transform:

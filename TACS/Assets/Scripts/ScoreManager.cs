@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip soundB; // Assign the sound for explosion
     public AudioClip soundC; // Assign the sound for level completion
     public AudioClip soundD; // Assign the sound for player death
+    public AudioClip soundE; // Assign the sound for game failure
     public float delayDuration = 1.0f;  // Duration to wait before transitioning
 
     private void Awake()
@@ -48,11 +49,6 @@ public class ScoreManager : MonoBehaviour
         if (score >= maxscore) {
             //advance to next level/scene
             StartCoroutine(HandleCompletion());
-            /*Debug.Log("scene change 1");
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            Debug.Log("scene change 2");
-            audioSource.PlayOneShot(soundC);//change to soundC when get sound effect
-            SceneManager.LoadScene(nextSceneIndex);*/
         }
 
         if (scoreText != null)
@@ -71,12 +67,6 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void PlayerWon() {
-        if (score == 4) {
-            SceneManager.LoadScene("gameWin");
-        }
-    }
-
     public void PlayerDied() 
     {
         player.gameObject.SetActive(false);
@@ -85,8 +75,8 @@ public class ScoreManager : MonoBehaviour
         UpdateLifeUI();
 
         if (PersistentManager.Instance.lives <= 0) {
-            //GameOver();
-            SceneManager.LoadScene("gameOver");
+            //game over
+            StartCoroutine(HandleFailure());
         } else {
             InvokeRepeating("Respawn",1,1);
         }
@@ -118,5 +108,20 @@ public class ScoreManager : MonoBehaviour
 
         // Transition to the next scene
         SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    private IEnumerator HandleFailure()
+    {
+        yield return new WaitForSeconds(delayDuration);
+        if (audioSource != null && soundC != null)
+        {
+            audioSource.PlayOneShot(soundE); //switch to failure sound
+        }
+        
+        // Wait for the sound to finish or the specified delay duration
+        yield return new WaitForSeconds(delayDuration);
+
+        // Transition to the game over scene
+        SceneManager.LoadScene("gameOver");
     }
 }
