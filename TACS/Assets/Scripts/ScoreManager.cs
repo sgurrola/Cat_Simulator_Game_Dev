@@ -5,8 +5,6 @@ public class ScoreManager : MonoBehaviour
 {
     public int score = 0;         // The player's score
     public int maxscore = 4;
-    public int lives = 9;
-    public int maxlives = 9;
     public Text scoreText;        // Reference to the UI text element
     public Text lifeText;
     public float respawn_time = 3.0f;
@@ -16,14 +14,21 @@ public class ScoreManager : MonoBehaviour
     public AudioClip soundA; // Assign the sound for Object A
     public AudioClip soundB; // Assign the sound for Object B
 
+    private void Awake()
+    {
+        lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
+    }
+
     public void PushableBroke(int amount)
     {
         audioSource.PlayOneShot(soundA);
+        PersistentManager.Instance.score += 1;
         IncreaseScore(amount);
     }
     public void BombBroke()
     {
         audioSource.PlayOneShot(soundB);
+        PersistentManager.Instance.score += 1;
         PlayerDied();
     }
     // This function increases the score
@@ -55,8 +60,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (lifeText != null)
         {
-            lifeText.text = "Lives: " + lives.ToString() + "/" + maxlives.ToString();
-            Debug.Log("Health decreased, current health: " + lives + "/" + maxlives);
+            lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
+            Debug.Log("Health decreased, current health: " + PersistentManager.Instance.lives + "/" + PersistentManager.Instance.maxlives);
         }
     }
 
@@ -69,10 +74,11 @@ public class ScoreManager : MonoBehaviour
     public void PlayerDied() 
     {
         player.gameObject.SetActive(false);
-        this.lives--;
+        PersistentManager.Instance.lives -= 1;
+        //this.lives--;
         UpdateLifeUI();
 
-        if (this.lives <= 0) {
+        if (PersistentManager.Instance.lives <= 0) {
             //GameOver();
             SceneManager.LoadScene("gameOver");
         } else {

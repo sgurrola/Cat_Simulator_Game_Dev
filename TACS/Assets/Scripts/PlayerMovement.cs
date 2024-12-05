@@ -124,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         if(isOnCurtain) {
             Debug.Log("Climbing real");
             vertical = value.Get<float>();
+            //check when vertical is negative play curtain ripping sound
         }
         if(!isOnCurtain) {                      //prevents weird curtain bug that forces player to only go up on curtains
             vertical = 0;
