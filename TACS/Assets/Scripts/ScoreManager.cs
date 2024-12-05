@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip soundA; // Assign the sound for bottle break
     public AudioClip soundB; // Assign the sound for explosion
     public AudioClip soundC; // Assign the sound for level completion
+    public AudioClip soundD; // Assign the sound for player death
     public float delayDuration = 1.0f;  // Duration to wait before transitioning
 
     private void Awake()
@@ -79,8 +80,8 @@ public class ScoreManager : MonoBehaviour
     public void PlayerDied() 
     {
         player.gameObject.SetActive(false);
+        audioSource.PlayOneShot(soundD);
         PersistentManager.Instance.lives -= 1;
-        //this.lives--;
         UpdateLifeUI();
 
         if (PersistentManager.Instance.lives <= 0) {
