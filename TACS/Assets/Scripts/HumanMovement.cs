@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class HumanMovement : MonoBehaviour
 {
-    public float speed = 0;
+    public float speed = 4;
     public LayerMask humanFieldLayer;
     public GameObject humanField;
     public GameObject player;

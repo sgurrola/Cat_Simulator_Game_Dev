@@ -31,7 +31,6 @@ public class MoveableObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Destroyer") 
         {
-            Destroy(this.gameObject);
             if (scoreManager != null)
             {
                 if(this.gameObject.tag == "Moveable") 
@@ -40,10 +39,16 @@ public class MoveableObject : MonoBehaviour
                     Debug.Log("Score increased, current score: " + scoreManager.score);
                 } else //else if (this.gameObject.tag == "Bomb")
                 {
+                    // Debug.Log("explosion should trigger");
+                    // Debug.Log(GetComponentInChildren<ParticleSystem>());
+                    GetComponentInChildren<ParticleSystem>().Play();
                     scoreManager.PlayerDied();
                 }
                 
             }
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
+            Destroy(this.gameObject, 2f);
         }         
     }
 
