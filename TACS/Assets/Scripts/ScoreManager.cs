@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
+        UpdateLifeScoreUI();
     }
 
     public void PushableBroke(int amount)
@@ -36,57 +36,48 @@ public class ScoreManager : MonoBehaviour
         PersistentManager.Instance.score += 1;
         PlayerDied();
     }
-    // This function increases the score
     public void IncreaseScore(int amount)
     {
         score += amount;
-        UpdateScoreUI();
+        UpdateLifeScoreUI();
     }
-
-    // Update the score display
-    void UpdateScoreUI()
-    {   
-        if (score >= maxscore) {
-            //advance to next level/scene
-            StartCoroutine(HandleCompletion());
-        }
-
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score.ToString() + "/" + maxscore.ToString();
-        }
-    }
-
-    // Update the score display
-    void UpdateLifeUI()
-    {
-        if (lifeText != null)
-        {
-            lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
-            Debug.Log("Health decreased, current health: " + PersistentManager.Instance.lives + "/" + PersistentManager.Instance.maxlives);
-        }
-    }
-
     public void PlayerDied() 
     {
         player.gameObject.SetActive(false);
         audioSource.PlayOneShot(soundD);
         PersistentManager.Instance.lives -= 1;
-        UpdateLifeUI();
+        UpdateLifeScoreUI();
+
+    }
+    void UpdateLifeScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score.ToString() + "/" + maxscore.ToString();
+        }
+        if (lifeText != null)
+        {
+            lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
+            Debug.Log("Health decreased, current health: " + PersistentManager.Instance.lives + "/" + PersistentManager.Instance.maxlives);
+        }
 
         if (PersistentManager.Instance.lives <= 0) {
             //game over
             StartCoroutine(HandleFailure());
-        } else {
+        } else if (!player.activeSelf) {
             InvokeRepeating("Respawn",1,1);
-        }
+        }   
 
+        if (score >= maxscore) {
+            //advance to next level/scene
+            StartCoroutine(HandleCompletion());
+        }     
     }
 
     private void Respawn()
     {
         if(!human.GetComponent<HumanMovement>().isMoving) {
-            player.transform.position = Vector3.zero;
+            player.transform.position = player.GetComponent<PlayerMovement>().spawnLoc;
             player.GetComponent<PlayerMovement>().MomentumStop();
             player.gameObject.SetActive(true);
             CancelInvoke();
@@ -96,6 +87,7 @@ public class ScoreManager : MonoBehaviour
     private IEnumerator HandleCompletion()
     {
         yield return new WaitForSeconds(delayDuration);
+
         // Play the completion sound
         if (audioSource != null && soundC != null)
         {
@@ -103,6 +95,7 @@ public class ScoreManager : MonoBehaviour
         }
         
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        
         // Wait for the sound to finish or the specified delay duration
         yield return new WaitForSeconds(delayDuration);
 
@@ -113,11 +106,13 @@ public class ScoreManager : MonoBehaviour
     private IEnumerator HandleFailure()
     {
         yield return new WaitForSeconds(delayDuration);
-        if (audioSource != null && soundC != null)
+
+        // Play the completion sound
+        if (audioSource != null && soundE != null)
         {
             audioSource.PlayOneShot(soundE); //switch to failure sound
         }
-        
+
         // Wait for the sound to finish or the specified delay duration
         yield return new WaitForSeconds(delayDuration);
 
