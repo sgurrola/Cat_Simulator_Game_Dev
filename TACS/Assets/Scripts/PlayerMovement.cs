@@ -23,9 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float fallMult = 2.5f;
     public float lowJumpMult = 2f;
-    
-    private int score = 0;
-
     public ScoreManager scoreManager;
     public bool playerCaught;
     //private int score = 0;
@@ -127,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         if(isOnCurtain) {
             Debug.Log("Climbing real");
             vertical = value.Get<float>();
+            //check when vertical is negative play curtain ripping sound
         }
         if(!isOnCurtain) {                      //prevents weird curtain bug that forces player to only go up on curtains
             vertical = 0;
