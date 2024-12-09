@@ -31,7 +31,6 @@ public class MoveableObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Destroyer") 
         {
-            Destroy(this.gameObject);
             if (scoreManager != null)
             {
                 if(this.gameObject.tag == "Moveable") 
@@ -40,10 +39,17 @@ public class MoveableObject : MonoBehaviour
                     Debug.Log("Score increased, current score: " + scoreManager.score);
                 } else //else if (this.gameObject.tag == "Bomb")
                 {
+                    // Debug.Log("explosion should trigger");
+                    // Debug.Log(GetComponentInChildren<ParticleSystem>());
+                    GetComponentInChildren<ParticleSystem>().Play();
+                    scoreManager.PlayerDied();
                     scoreManager.BombBroke();
                 }
                 
             }
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
+            Destroy(this.gameObject, 2f);
         }         
     }
 
@@ -67,8 +73,8 @@ public class MoveableObject : MonoBehaviour
     private void moveBack() {
         this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         this.gameObject.transform.rotation = Quaternion.RotateTowards(transform.rotation,startRot,3f);
-        this.gameObject.transform.position = Vector2.MoveTowards(transform.position,startpos,.085f);
-        if(this.gameObject.transform.position.x == startpos.x && transform.position.y == startpos.y) {
+        this.gameObject.transform.position = Vector2.MoveTowards(transform.position,startpos,.095f);
+        if(this.gameObject.transform.position.x == startpos.x && transform.position.y == startpos.y && transform.rotation == startRot) {
             this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             CancelInvoke();
         }
