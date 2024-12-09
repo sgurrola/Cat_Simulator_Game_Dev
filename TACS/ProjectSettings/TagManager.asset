@@ -42,9 +42,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Setting
+    uniqueID: 853482299
+    locked: 0
   - name: human
     uniqueID: 1706860271
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2948152529
     locked: 0

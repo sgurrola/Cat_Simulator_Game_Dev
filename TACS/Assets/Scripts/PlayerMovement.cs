@@ -19,24 +19,24 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     private bool isFacingRight = true;
-    private Vector3 spawnLoc;
+    public Vector3 spawnLoc;
 
     public float fallMult = 2.5f;
     public float lowJumpMult = 2f;
-    
-    private int score = 0;
-
     public ScoreManager scoreManager;
     public bool playerCaught;
     //private int score = 0;
     public LayerMask humanFieldLayer;
+    public Animator anim;
+    public LayerMask safeZoneLayer;
+
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log("Hello world! " + speed);
         rb = GetComponent<Rigidbody2D>();
         cl = GetComponent<Collider2D>();
-        spawnLoc = transform.position;
+        spawnLoc = this.gameObject.transform.position;;
     }
 
     // Update is called once per frame
@@ -45,22 +45,35 @@ public class PlayerMovement : MonoBehaviour
         if (isFacingRight && horizontal < 0f) Flip();
         if (!isFacingRight && horizontal > 0f) Flip();
         
-        if(Physics2D.OverlapCircle(this.gameObject.transform.position, .1f, humanFieldLayer)) { //add result
-            Debug.Log("You've been spotted! player!");
-            //scene reset
-            playerCaught = true;
+        if(Physics2D.OverlapCircle(this.transform.position, .1f, humanFieldLayer)) { //add result
+            if(!Physics2D.OverlapCircle(this.transform.position, .1f, safeZoneLayer))
+            {
+                Debug.Log("You've been spotted!");
+                playerCaught = true;
+            }
+            else {
+                playerCaught = false;
+                // Debug.Log("Good Hiding");
+            }
+            
         }
-        else {
-            playerCaught = false;
-        }
+
         if (playerCaught) {
             if (scoreManager != null)
             {
                 this.gameObject.SetActive(false);
                 scoreManager.PlayerDied();
                 MomentumStop();
+                playerCaught = false;
+
             }
         }
+
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)){ anim.SetFloat("isRunning", 0.2f); Debug.Log("waling");}
+        else anim.SetFloat("isRunning", 0f);
+
+        if(Input.GetKey(KeyCode.Space)){ anim.SetFloat("isJumping", 0.2f); Debug.Log("hop hop");}
+        else anim.SetFloat("isJumping", 0f);
 
     }
 
@@ -69,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(horizontal * speed, vertical * speed);
         }
         else if(rb.velocity.y < 0) { //coming down
-            Debug.Log("negative y vel");
+            // Debug.Log("negative y vel");
             // rb.velocity = new Vector2(horizontal * .95f, rb.velocity.y);        //limited in air movement - creates issue with moving on top of pushable obj
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);    //unlimited in air movement going down
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
@@ -102,15 +115,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnMove(InputValue value) {  
-        Debug.Log("Moving: " + value.Get<float>());
+        // Debug.Log("Moving: " + value.Get<float>());
         horizontal = value.Get<float>();             
     }
 
     void OnClimb(InputValue value) {
-        Debug.Log("Climbing");
+        // Debug.Log("Climbing");
         if(isOnCurtain) {
             Debug.Log("Climbing real");
             vertical = value.Get<float>();
+            //check when vertical is negative play curtain ripping sound
         }
         if(!isOnCurtain) {                      //prevents weird curtain bug that forces player to only go up on curtains
             vertical = 0;

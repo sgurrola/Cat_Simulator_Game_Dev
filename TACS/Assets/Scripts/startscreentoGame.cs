@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class startscreentoGame : MonoBehaviour
 {
-     public void GoToMainMenu() 
-    { SceneManager.LoadScene("merging tester");}
+     public void GoToMainMenu() { 
+        //SceneManager.LoadScene("level");
+        Debug.Log("scene change 1");
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        Debug.Log("scene change 2");
+        SceneManager.LoadScene(nextSceneIndex);
+    }
     void Start()
     {
         
