@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip soundC; // Assign the sound for level completion
     public AudioClip soundD; // Assign the sound for player death
     public AudioClip soundE; // Assign the sound for game failure
-    public float delayDuration = 1.0f;  // Duration to wait before transitioning
+    public float delayDuration = 2.0f;  // Duration to wait before transitioning
 
     private void Awake()
     {
@@ -86,7 +86,7 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator HandleCompletion()
     {
-        yield return new WaitForSeconds(delayDuration);
+        yield return new WaitForSeconds(delayDuration/4);
 
         // Play the completion sound
         if (audioSource != null && soundC != null)
@@ -105,7 +105,7 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator HandleFailure()
     {
-        yield return new WaitForSeconds(delayDuration);
+        yield return new WaitForSeconds(delayDuration/4);
 
         // Play the completion sound
         if (audioSource != null && soundE != null)

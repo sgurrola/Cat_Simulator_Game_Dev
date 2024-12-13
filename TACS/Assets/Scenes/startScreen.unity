@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMusic: {fileID: 8300000, guid: 0c4a90ac0bfb4864fa7730ac6f3229c0, type: 3}
   gameOverMusic: {fileID: 8300000, guid: 2240bed333d4fbb4fbac3f5e5dd2f6e6, type: 3}
-  victoryrMusic: {fileID: 8300000, guid: 991f8a266d57eed44b67f785d941e38a, type: 3}
+  victoryrMusic: {fileID: 8300000, guid: 253c7d2390d875f48bf1c8b92869f715, type: 3}
 --- !u!82 &1965867853
 AudioSource:
   m_ObjectHideFlags: 0
