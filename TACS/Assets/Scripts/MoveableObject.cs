@@ -35,9 +35,7 @@ public class MoveableObject : MonoBehaviour
             {
                 if(this.gameObject.tag == "Moveable") 
                 {
-                    if(GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
-
-                    scoreManager.IncreaseScore(1);
+                    scoreManager.PushableBroke(1);
                     Debug.Log("Score increased, current score: " + scoreManager.score);
                 } else //else if (this.gameObject.tag == "Bomb")
                 {
@@ -45,6 +43,7 @@ public class MoveableObject : MonoBehaviour
                     // Debug.Log(GetComponentInChildren<ParticleSystem>());
                     if(GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
                     scoreManager.PlayerDied();
+                    scoreManager.BombBroke();
                 }
                 
             }

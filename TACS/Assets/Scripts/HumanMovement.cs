@@ -19,9 +19,22 @@ public class HumanMovement : MonoBehaviour
     public bool isMoving = false;
 
     //public float hTimer = 15f;
+    public AudioSource audioSource; // Reference to the AudioSource component
+    public AudioClip stepSound; // Single step sound clip
+    public float maxVolume = 1.0f; // Maximum walking volume
+    public float minVolume = 0.2f; // Minimum walking volume
+    public float pitchHigh = 1.0f; // Normal pitch
+    public float pitchLow = 0.6f; // Slowed-down pitch
+    public float stepInterval = 0.5f; // Time between steps
+    private Coroutine walkingSoundCoroutine;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = stepSound;
+        audioSource.volume = 0;
+        audioSource.loop = false; // Manually loop the single step sound
+
         InvokeRepeating("HumanStart", 20.0f, 15.0f); //swap for coroutine
         //https://docs.unity3d.com/ScriptReference/MonoBehaviour.StartCoroutine.html
     }
@@ -53,7 +66,16 @@ public class HumanMovement : MonoBehaviour
             hasRotated = false;
 
             speed = 0;
-            isMoving = false;   
+            isMoving = false;  
+
+            // Fade out the sound and lower pitch
+            if (walkingSoundCoroutine != null) StopCoroutine(walkingSoundCoroutine);
+            StartCoroutine(HandleResetFade()); 
+        }
+        else if (isMoving && walkingSoundCoroutine == null)
+        {
+            // Start looping walking sound
+            walkingSoundCoroutine = StartCoroutine(PlayWalkingSound());
         }
         GameObject[] boxes = GameObject.FindGameObjectsWithTag("Moveable");
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
@@ -80,5 +102,68 @@ public class HumanMovement : MonoBehaviour
     void HumanStart() {
         isMoving = true;
         speed = 5;
+
+        // Fade in the sound and reset pitch
+        if (walkingSoundCoroutine != null) StopCoroutine(walkingSoundCoroutine);
+        StartCoroutine(FadeInSound(pitchHigh));
+    }
+
+        // Coroutine to handle reset fade logic
+    IEnumerator HandleResetFade()
+    {
+        // Lower the pitch and fade out the volume
+        yield return StartCoroutine(FadeOutSound(pitchLow));
+
+        // Immediately fade the sound back in after the reset
+        yield return StartCoroutine(FadeInSound(pitchHigh));
+        walkingSoundCoroutine = StartCoroutine(PlayWalkingSound());
+    }
+
+    // Coroutine to play walking sound with manual looping
+    IEnumerator PlayWalkingSound()
+    {
+        while (isMoving)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play(); // Play the step sound
+            }
+
+            yield return new WaitForSeconds(stepInterval); // Wait before playing the next step
+        }
+    }
+
+    // Coroutine to fade out sound and lower pitch
+    IEnumerator FadeOutSound(float targetPitch)
+    {
+        float fadeDuration = 1.0f;
+        float startVolume = audioSource.volume;
+
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            audioSource.volume = Mathf.Lerp(startVolume, minVolume, t / fadeDuration);
+            audioSource.pitch = Mathf.Lerp(audioSource.pitch, targetPitch, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = minVolume;
+        audioSource.pitch = targetPitch;
+    }
+
+    // Coroutine to fade in sound and raise pitch
+    IEnumerator FadeInSound(float targetPitch)
+    {
+        float fadeDuration = 1.0f;
+        float startVolume = audioSource.volume;
+
+        audioSource.pitch = targetPitch;
+
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            audioSource.volume = Mathf.Lerp(startVolume, maxVolume, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = maxVolume;
     }
 }

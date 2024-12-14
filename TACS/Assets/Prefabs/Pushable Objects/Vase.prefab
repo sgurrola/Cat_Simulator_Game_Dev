@@ -130,6 +130,7 @@ MonoBehaviour:
   humanFieldLayer:
     serializedVersion: 2
     m_Bits: 128
+  audioSource: {fileID: 0}
 --- !u!60 &5206821837611072816
 PolygonCollider2D:
   m_ObjectHideFlags: 0
