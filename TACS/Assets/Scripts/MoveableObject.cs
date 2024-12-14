@@ -43,7 +43,8 @@ public class MoveableObject : MonoBehaviour
                     // Debug.Log("explosion should trigger");
                     // Debug.Log(GetComponentInChildren<ParticleSystem>());
                     if(GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
-                    // scoreManager.PlayerDied();
+                    //scoreManager.PlayerDied();
+                    //GetComponentInChildren<ParticleSystem>().Play();
                     scoreManager.BombBroke();
                 }
                 
