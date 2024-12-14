@@ -1385,6 +1385,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1198060359}
     m_Modifications:
+    - target: {fileID: 2860609707984554764, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
+      propertyPath: ShapeModule.type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860609707984554764, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860609707984554764, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3533841163959538906, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1425,6 +1437,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7589945581870710399, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589945581870710399, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7836752150123107883, guid: 3b0de2d0c36aeb94ca9c5af5656c52b7, type: 3}
       propertyPath: m_Name
       value: potBreak
