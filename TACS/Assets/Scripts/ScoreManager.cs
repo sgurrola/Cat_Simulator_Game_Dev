@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int maxscore = 4;
     public Text scoreText;        // Reference to the UI text element
     public Text lifeText;
+    public Text levelNum;
     public float respawn_time = 3.0f;
     public GameObject player;
     public GameObject human;
@@ -60,6 +61,11 @@ public class ScoreManager : MonoBehaviour
             lifeText.text = "Lives: " + PersistentManager.Instance.lives.ToString() + "/" + PersistentManager.Instance.maxlives.ToString();
             Debug.Log("Health decreased, current health: " + PersistentManager.Instance.lives + "/" + PersistentManager.Instance.maxlives);
         }
+        if (levelNum != null)
+        {
+            levelNum.text = PersistentManager.Instance.levelnum.ToString();
+            Debug.Log("level checked. level at " + PersistentManager.Instance.levelnum.ToString());
+        }
 
         if (PersistentManager.Instance.lives <= 0) {
             //game over
@@ -86,6 +92,7 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator HandleCompletion()
     {
+        PersistentManager.Instance.levelnum += 1;
         yield return new WaitForSeconds(delayDuration/4);
 
         // Play the completion sound

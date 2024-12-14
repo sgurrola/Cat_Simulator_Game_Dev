@@ -10,6 +10,7 @@ public class PersistentManager : MonoBehaviour
     public int lives;
     public int maxlives;
     public int catType;
+    public int levelnum;
 
     private void Awake()
     {
@@ -34,9 +35,11 @@ public class PersistentManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        
         if (scene.name == "startScreen")
         {
             lives = maxlives;
+            levelnum = 1;
         }
     }
 }
