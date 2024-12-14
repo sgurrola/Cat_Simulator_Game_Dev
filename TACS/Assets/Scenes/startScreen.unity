@@ -839,6 +839,7 @@ MonoBehaviour:
   lives: 9
   maxlives: 9
   catType: 0
+  levelnum: 0
 --- !u!4 &970678744
 Transform:
   m_ObjectHideFlags: 0
@@ -902,10 +903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1444,8 +1445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177b289c881831a468be9465780e2d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMusic: {fileID: 8300000, guid: 0c4a90ac0bfb4864fa7730ac6f3229c0, type: 3}
-  gameOverMusic: {fileID: 8300000, guid: 2240bed333d4fbb4fbac3f5e5dd2f6e6, type: 3}
+  defaultMusic: {fileID: 8300000, guid: 21d556c918de3974a8382fad2850d6e3, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: d76c08a66739406439e48ee6c7678b16, type: 3}
   victoryrMusic: {fileID: 8300000, guid: 253c7d2390d875f48bf1c8b92869f715, type: 3}
 --- !u!82 &1965867853
 AudioSource:
