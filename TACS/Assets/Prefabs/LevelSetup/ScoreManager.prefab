@@ -49,6 +49,7 @@ MonoBehaviour:
   maxscore: 1
   scoreText: {fileID: 0}
   lifeText: {fileID: 0}
+  levelNum: {fileID: 0}
   respawn_time: 3
   player: {fileID: 0}
   human: {fileID: 0}
@@ -56,7 +57,7 @@ MonoBehaviour:
   soundA: {fileID: 8300000, guid: 9055eb49b4b2a7c499b928499993eacb, type: 3}
   soundB: {fileID: 8300000, guid: 50bb4a129d7b5c1429af8ea5543293ac, type: 3}
   soundC: {fileID: 8300000, guid: 7b42b2217cb90a04596a8fed09025f9c, type: 3}
-  soundD: {fileID: 8300000, guid: de003f35e6139f64fb5a98b5cc0bf190, type: 3}
+  soundD: {fileID: 8300000, guid: 6a3c4b64157f27a4dac21745e3bc4953, type: 3}
   soundE: {fileID: 8300000, guid: ae25bc9cb6f73404f9018d27c721c740, type: 3}
   delayDuration: 1
 --- !u!82 &2447952214648771343
