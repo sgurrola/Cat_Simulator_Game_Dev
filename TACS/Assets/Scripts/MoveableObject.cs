@@ -35,20 +35,23 @@ public class MoveableObject : MonoBehaviour
             {
                 if(this.gameObject.tag == "Moveable") 
                 {
+                    if(GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
                     scoreManager.PushableBroke(1);
                     Debug.Log("Score increased, current score: " + scoreManager.score);
                 } else //else if (this.gameObject.tag == "Bomb")
                 {
                     // Debug.Log("explosion should trigger");
                     // Debug.Log(GetComponentInChildren<ParticleSystem>());
-                    GetComponentInChildren<ParticleSystem>().Play();
+                    if(GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
                     scoreManager.PlayerDied();
                     scoreManager.BombBroke();
                 }
                 
             }
             GetComponent<SpriteRenderer>().enabled = false;
+            // gameObject.layer = 1;
             GetComponent<PolygonCollider2D>().enabled = false;
+            // GetComponent<Rigidbody2D>().gravityScale = 0;
             Destroy(this.gameObject, 2f);
         }         
     }
